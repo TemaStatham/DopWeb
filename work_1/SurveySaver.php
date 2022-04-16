@@ -1,5 +1,4 @@
 <?php
-header('Content-Type: text/plain');
 
 require_once('src/common.inc.php');
 $survey = new RequestSurvey;
