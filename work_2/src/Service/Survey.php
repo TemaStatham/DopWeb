@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Service\RequestSurvey;
 
 class Survey
 {
@@ -10,7 +9,7 @@ class Survey
     private $firstName;
     private $lastName;
     private $age;
-    public function __construct(RequestSurvey $email, $firstName, $lastName, $age)
+    public function __construct($email, $firstName, $lastName, $age)
     {
         $this->email = $email;
         $this->firstName = $firstName;

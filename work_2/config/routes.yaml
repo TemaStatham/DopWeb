@@ -1,3 +1,3 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+syrvey:
+    path: /survey
+    controller: App\Controller\SurveyController::SurveySaver

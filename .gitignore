@@ -1,5 +1,5 @@
 /test
 /.idea
 /vendor
-/.json
-/.lock
+*.json
+*.lock

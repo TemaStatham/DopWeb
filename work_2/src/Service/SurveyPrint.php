@@ -2,15 +2,17 @@
 
 namespace App\Service;
 
-use App\Service\Survey;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class SurveyPrint extends AbstractController
+class SurveyPrint
 {
-    public function printFile(Survey $fileName)
+    public static function printFile(Survey $fileName): array
     {
         $fileEmail = $fileName->getEmail();
-        if (file_exists($fileName = "./data/$fileEmail.txt")) readfile($fileName = "./data/$fileEmail.txt");
-        return;
+        $fileData = [];
+        if (file_exists("data1/$fileEmail.txt"))
+        {
+            $fileData = file("data1/$fileEmail.txt");
+        }
+        return $fileData;
     }
 }
