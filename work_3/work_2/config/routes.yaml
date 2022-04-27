@@ -1,0 +1,3 @@
+syrvey:
+    path: /survey
+    controller: App\Controller\SurveyController::SurveySaver
