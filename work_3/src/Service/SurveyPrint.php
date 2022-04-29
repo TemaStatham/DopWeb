@@ -5,14 +5,13 @@ namespace App\Service;
 
 class SurveyPrint
 {
-    public static function printFile(Survey $fileName): array
+    public static function printFile(Survey $dataEmail): ?array
     {
-        $fileEmail = $fileName->getEmail();
-        $fileData = [];
-        if (file_exists("data1/$fileEmail.txt"))
-        {
-            $fileData = file("data1/$fileEmail.txt");
+        if (file_exists("./data1/".$dataEmail->getEmail().".txt"))  {
+            return  file("./data1/".$dataEmail->getEmail().".txt");
+        } else {
+            echo 'такого файла не существует';
+            return null;
         }
-        return $fileData;
     }
 }

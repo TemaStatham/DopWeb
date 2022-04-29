@@ -5,7 +5,7 @@ namespace App\Service;
 
 class Survey
 {
-    private string $email;
+    private ?string $email;
     private ?string $firstName;
     private ?string $lastName;
     private ?string $age;
@@ -17,7 +17,7 @@ class Survey
         $this->age = $age;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }

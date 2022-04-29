@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
+use App\Form\SurveyForm;
+use App\Service\SurveyPrint;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\RequestSurvey;
-use App\Service\Survey;
 use App\Service\SurveyFileStorage;
-use App\Service\SurveyPrint;
 
 class SurveyController extends AbstractController
 {
@@ -17,10 +17,20 @@ class SurveyController extends AbstractController
         $survey = new RequestSurvey($request);
         $storageData = $survey->parameter();
         $fileStorage = new SurveyFileStorage();
-        $hasData = $fileStorage->fileStore($storageData);
-        $data = $hasData ? $storageData->getData() : [];
+        return $this->render('surveyFile.html.twig', [
+            'hasData' => $fileStorage->fileStore($storageData),
+        ]);
+    }
+    public function Survey(Request $request): Response
+    {
+        $survey = new RequestSurvey($request);
+        $storageData = $survey->parameter();
+        $print = new SurveyPrint();
+        $hasData = $print->printFile($storageData);
+        $form = $this->createForm(SurveyForm::class);
         return $this->render('survey.html.twig', [
-            'data' => $data,
+            'data' => $hasData,
+            'form' => $form->createView(),
         ]);
     }
 }

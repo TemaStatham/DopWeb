@@ -1,3 +1,7 @@
-syrvey:
-    path: /survey
+SyrveySaver:
+    path: /survey/saver
     controller: App\Controller\SurveyController::SurveySaver
+
+SyrveyShow:
+    path: /survey/show
+    controller: App\Controller\SurveyController::Survey
